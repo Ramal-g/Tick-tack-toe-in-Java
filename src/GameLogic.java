@@ -14,6 +14,7 @@ public class GameLogic
 
     //Game
     private Player actualTurn;
+    private  boolean iaMode = true;
 
     public GameLogic(){
         SetNewTurn();
@@ -88,7 +89,26 @@ public class GameLogic
 
                         //Next player turn
                         if (actualTurn == Player.x) {
-                            actualTurn = Player.o;
+                            if(!iaMode){
+                                actualTurn = Player.o;
+                            }
+                            else{
+                                actualTurn = Player.o;
+                                while(true){
+
+                                    Random r = new Random();
+
+                                    Vector2 v = new Vector2(0, 0);
+                                    v.x = r.nextInt(3);
+                                    v.y = r.nextInt(3);
+
+                                    if(MakeMovement(v, actualTurn)){
+                                        actualTurn = Player.x;
+                                        break;
+                                    }
+                                }
+
+                            }
                         }
                         else actualTurn = Player.x;
                         
@@ -104,8 +124,6 @@ public class GameLogic
                     System.out.println("Please write with this format 'y x'"); //Stupid info
                 }
             }
-
-
 
         }
 
@@ -124,6 +142,8 @@ public class GameLogic
                 break;
             }
     }
+
+
 
 
     boolean ComprobateWin() //<- Function to calculate the final game

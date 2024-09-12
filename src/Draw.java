@@ -32,7 +32,7 @@ public class Draw
     public static void ClearConsole(){
 
         for(int i = 0; i < 1000; i++){
-            System.out.println("");
+            System.out.println(" ");
         }
 
     }
