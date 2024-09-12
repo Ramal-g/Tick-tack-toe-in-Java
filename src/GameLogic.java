@@ -165,7 +165,6 @@ public class GameLogic
         }
 
         //Diagonals
-
         if(grid[0][0] == Player.x && grid[1][1] == Player.x && grid[2][2] == Player.x ||
            grid[0][0] == Player.o && grid[1][1] == Player.o && grid[2][2] == Player.o)
                return true;
@@ -184,7 +183,6 @@ public class GameLogic
             for(int x = 0; x < 3; x++){
 
                 if(grid[y][x] != Player.None) return false;
-
             }
         }
 
