@@ -14,7 +14,7 @@ public class GameLogic
 
     //Game
     private Player actualTurn;
-    private  boolean iaMode = true;
+    public  boolean iaMode = true;
 
     public GameLogic(){
         SetNewTurn();
