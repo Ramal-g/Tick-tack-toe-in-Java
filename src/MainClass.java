@@ -17,7 +17,7 @@ public class MainClass{
             System.out.println(r);
             if(r == 0){
                 gl.iaMode = true;
-                break;1
+                break;
             }
             else if(r == 1){
                 gl.iaMode = false;

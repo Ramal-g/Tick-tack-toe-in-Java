@@ -92,18 +92,37 @@ public class GameLogic
                             if(!iaMode){
                                 actualTurn = Player.o;
                             }
-                            else{
+                            else // <- Play IA
+                            {
                                 actualTurn = Player.o;
                                 while(true){
 
                                     Random r = new Random();
 
+                                    //Simple Random Movement
                                     Vector2 v = new Vector2(0, 0);
                                     v.x = r.nextInt(3);
                                     v.y = r.nextInt(3);
 
+                                    //End
                                     if(MakeMovement(v, actualTurn)){
+                                        //Comprobate Win
+                                        if(ComprobateWin()){
+                                        
+                                            Draw.DrawGame(this); //Draw UI
+                                            System.out.println("CPU Wins!, you are a noob");
+                                            return;
+                                        
+                                        }
+                                    
+                                        if(ComprobateDraw()){
+                                            Draw.DrawGame(this); //Draw UI
+                                            System.out.println("Draw!");
+                                            return;
+                                        }
+
                                         actualTurn = Player.x;
+
                                         break;
                                     }
                                 }
@@ -131,7 +150,11 @@ public class GameLogic
 
     void SetNewTurn() //<- In the start the game the firts player is set randomly
     {
-        Random r = new Random();
+        if (iaMode) {
+            actualTurn = Player.x;
+        }
+        else{
+            Random r = new Random();
 
         switch(r.nextInt(2)) {
             case 0:
@@ -141,6 +164,7 @@ public class GameLogic
                 actualTurn = Player.o;
                 break;
             }
+        }
     }
 
 
